@@ -3,11 +3,11 @@ object SuggestService extends App {
   class SuggestService(companyNames: Seq[String]) {
 
     def suggest (input: String, numberOfSuggest: Int): Seq[String] = {
-      val resss = companyNames.filter(_.startsWith(input)).filter(companyNames.indexOf(_) <= numberOfSuggest)
-      resss
+      val res = companyNames.map(_.capitalize).filter(_.startsWith(input.capitalize)).filter(companyNames.indexOf(_) <= numberOfSuggest)
+      res
     }
   }
 
-  val suggestserv = new SuggestService(Seq("Intel", "Microsoft", "Microwave", "Sun", "Silicon", "Apple", "AnalogDevices"))
-  println(suggestserv.suggest("Micro", 10))
+  val suggestserv = new SuggestService(Seq("Intel", "microsoft", "Microwave", "Microflex", "Microcontroller", "Sun", "Silicon", "Apple", "AnalogDevices"))
+  println(suggestserv.suggest("micro", 10))
 }
